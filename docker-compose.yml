@@ -1,0 +1,132 @@
+﻿services:
+  web:
+    build:
+      context: .
+      dockerfile: infrastructure/web.Dockerfile
+    env_file: .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    networks: [internal]
+  app-api:
+    build: services/app-api
+    env_file: .env
+    restart: unless-stopped
+    depends_on:
+      postgres-app: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      litellm: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    networks: [internal]
+  worker:
+    build: services/app-api
+    command: ["python", "worker.py"]
+    env_file: .env
+    restart: unless-stopped
+    depends_on:
+      app-api: { condition: service_healthy }
+    networks: [internal]
+  litellm:
+    image: ghcr.io/berriai/litellm:main-stable@sha256:9ef6f45bc0104940571765e610c52a1d761b5ec85efcd193795281086ee61277
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    env_file: .env
+    environment:
+      DATABASE_URL: ${LITELLM_DATABASE_URL}
+      UI_USERNAME: ${LITELLM_UI_USERNAME}
+      UI_PASSWORD: ${LITELLM_UI_PASSWORD}
+    volumes:
+      - ./litellm/config.yaml:/app/config.yaml:ro
+    restart: unless-stopped
+    depends_on:
+      postgres-litellm:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:4000/health/liveliness')"
+      interval: 30s
+      timeout: 8s
+      retries: 10
+    networks:
+      - internal
+  postgres-app:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ijat
+      POSTGRES_PASSWORD: ${APP_POSTGRES_PASSWORD}
+      POSTGRES_DB: ijat_app
+    volumes: [app-db:/var/lib/postgresql/data]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ijat -d ijat_app"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+    networks: [internal]
+  postgres-litellm:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: litellm
+      POSTGRES_PASSWORD: ${LITELLM_POSTGRES_PASSWORD}
+      POSTGRES_DB: litellm
+    volumes: [litellm-db:/var/lib/postgresql/data]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U litellm -d litellm"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+    networks: [internal]
+  redis:
+    image: redis:8-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redis-data:/data]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 8
+    networks: [internal]
+  prometheus:
+    image: prom/prometheus:v3.4.1
+    volumes: ["./infrastructure/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro", "prometheus-data:/prometheus"]
+    restart: unless-stopped
+    networks: [internal]
+  grafana:
+    image: grafana/grafana:12.0.2
+    environment: { GF_SECURITY_ADMIN_PASSWORD: "${GRAFANA_ADMIN_PASSWORD}" }
+    volumes: [grafana-data:/var/lib/grafana]
+    restart: unless-stopped
+    networks: [internal]
+  nginx:
+    image: nginx:1.29-alpine
+    volumes: ["./infrastructure/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"]
+    ports: ["127.0.0.1:${IJAT_HTTP_PORT:-8080}:80"]
+    restart: unless-stopped
+    depends_on:
+      web: { condition: service_healthy }
+      app-api: { condition: service_healthy }
+      litellm: { condition: service_healthy }
+    networks: [internal, public]
+
+networks:
+  internal: { internal: true }
+  public: {}
+volumes:
+  app-db: {}
+  litellm-db: {}
+  redis-data: {}
+  prometheus-data: {}
+  grafana-data: {}
