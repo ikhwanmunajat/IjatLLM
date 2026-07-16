@@ -45,6 +45,8 @@
       LITELLM_FAVICON_URL: https://ijatllm.my.id/ijatllm-icon.svg
     volumes:
       - ./litellm/config.yaml:/app/config.yaml:ro
+      - ./public/ijatllm-logo.svg:/app/branding/ijatllm-logo.svg:ro
+      - ./public/ijatllm-icon.svg:/app/branding/ijatllm-icon.svg:ro
     restart: unless-stopped
     depends_on:
       postgres-litellm:
