@@ -41,12 +41,12 @@
       DATABASE_URL: ${LITELLM_DATABASE_URL}
       UI_USERNAME: ${LITELLM_UI_USERNAME}
       UI_PASSWORD: ${LITELLM_UI_PASSWORD}
-      UI_LOGO_PATH: /app/branding/ijatllm-logo.svg
-      LITELLM_FAVICON_URL: /app/branding/ijatllm-icon.svg
+      UI_LOGO_PATH: /app/branding/ijatllm-logo.png
+      LITELLM_FAVICON_URL: /app/branding/ijatllm-icon.png
     volumes:
       - ./litellm/config.yaml:/app/config.yaml:ro
-      - ./public/ijatllm-logo.svg:/app/branding/ijatllm-logo.svg:ro
-      - ./public/ijatllm-icon.svg:/app/branding/ijatllm-icon.svg:ro
+      - ./public/ijatllm-logo.png:/app/branding/ijatllm-logo.png:ro
+      - ./public/ijatllm-icon.png:/app/branding/ijatllm-icon.png:ro
     restart: unless-stopped
     depends_on:
       postgres-litellm:
@@ -134,4 +134,5 @@ volumes:
   redis-data: {}
   prometheus-data: {}
   grafana-data: {}
+
 
