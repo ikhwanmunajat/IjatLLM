@@ -41,8 +41,8 @@
       DATABASE_URL: ${LITELLM_DATABASE_URL}
       UI_USERNAME: ${LITELLM_UI_USERNAME}
       UI_PASSWORD: ${LITELLM_UI_PASSWORD}
-      UI_LOGO_PATH: https://ijatllm.my.id/ijatllm-logo.svg
-      LITELLM_FAVICON_URL: https://ijatllm.my.id/ijatllm-icon.svg
+      UI_LOGO_PATH: /app/branding/ijatllm-logo.svg
+      LITELLM_FAVICON_URL: /app/branding/ijatllm-icon.svg
     volumes:
       - ./litellm/config.yaml:/app/config.yaml:ro
       - ./public/ijatllm-logo.svg:/app/branding/ijatllm-logo.svg:ro
@@ -134,3 +134,4 @@ volumes:
   redis-data: {}
   prometheus-data: {}
   grafana-data: {}
+
