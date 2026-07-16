@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -24,7 +24,7 @@ export default function LandingPage() {
 
       <header className="koboi-header">
         <a className="koboi-logo" href="#top">
-          <img className="koboi-logo-image" src="/ijatllm-icon.svg" alt="IjatLLM"/>
+          <span className="koboi-logo-icon"><i/><i/><i/></span>
           <b>Ijat<span>LLM</span></b>
         </a>
 
@@ -184,7 +184,7 @@ export default function LandingPage() {
       <footer className="koboi-footer" id="kontak">
         <div>
           <a className="koboi-logo" href="#top">
-            <img className="koboi-logo-image" src="/ijatllm-icon.svg" alt="IjatLLM"/>
+            <span className="koboi-logo-icon"><i/><i/><i/></span>
             <b>Ijat<span>LLM</span></b>
           </a>
           <p>API gateway dan infrastruktur AI untuk Indonesia.</p>

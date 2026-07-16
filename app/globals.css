@@ -224,3 +224,38 @@ footer{border-top:1px solid var(--line);background:var(--surface)}.footer-main{m
 .koboi-copyright{text-align:center;background:#0b1120;color:#8290a8;padding:20px;font-size:13px}
 @media(max-width:1000px){.koboi-header nav{display:none}.koboi-hero{grid-template-columns:1fr;padding:70px 30px}.koboi-copy{order:1}.koboi-visual{order:2}.koboi-copy h1{font-size:54px}.koboi-feature-grid{grid-template-columns:1fr 1fr}.koboi-model-grid{grid-template-columns:1fr 1fr}.koboi-services{grid-template-columns:1fr}.koboi-footer{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.language-banner{height:auto;padding:12px 50px 12px 15px;text-align:center;font-size:12px}.language-banner button:not(.banner-close){display:none}.koboi-header{height:80px;padding:0 18px}.koboi-header-actions button{display:none}.koboi-copy h1{font-size:42px;letter-spacing:-2px}.koboi-copy p{font-size:16px}.visual-card{width:100%;height:420px}.koboi-feature-grid,.koboi-model-grid,.service-list{grid-template-columns:1fr}.koboi-section,.koboi-models,.koboi-services{padding:75px 20px}.koboi-section-title h2,.koboi-services h2,.koboi-final h2{font-size:35px}.koboi-final{margin:45px 18px;padding:35px 25px;display:block}.koboi-final>a{display:inline-block;margin-top:20px}.koboi-footer{grid-template-columns:1fr;padding:55px 25px}}
+
+.brand-logo-image {
+  display: block;
+  width: auto;
+  height: 42px;
+  object-fit: contain;
+}
+
+.koboi-logo-image {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.auth-showcase .brand-logo-image {
+  height: 48px;
+}
+
+.app-logo .brand-logo-image {
+  height: 38px;
+}
+
+@media (max-width: 700px) {
+  .brand-logo-image {
+    height: 34px;
+    max-width: 170px;
+  }
+
+  .koboi-logo-image {
+    width: 40px;
+    height: 40px;
+  }
+}

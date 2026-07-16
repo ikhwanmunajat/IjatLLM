@@ -101,7 +101,7 @@ export default function DashboardApp({ section = "overview", userName = "Ijat An
 
   return <main className="app-frame">
     <aside className={menu ? "app-sidebar open" : "app-sidebar"}>
-      <div className="app-logo"><a className="brand" href="/"><img className="brand-logo-image" src="/ijatllm-logo.svg" alt="IjatLLM"/></a><button onClick={() => setMenu(false)}>×</button></div>
+      <div className="app-logo"><a className="brand" href="/"><span className="brand-mark"><i /><i /><i /></span><span>Ijat<span>LLM</span></span></a><button onClick={() => setMenu(false)}>×</button></div>
       <div className="workspace-switch"><span>WS</span><div><b>Ijat Workspace</b><small>Personal workspace</small></div><i>⌄</i></div>
       <nav>{nav.map(([slug, icon, label]) => <a className={section === slug ? "active" : ""} href={slug === "overview" ? "/dashboard" : `/dashboard/${slug}`} key={slug}><i>{icon}</i>{label}{slug === "notifications" && data.notifications.some((item) => !item.isRead) && <b>{data.notifications.filter((item) => !item.isRead).length}</b>}</a>)}</nav>
       <div className="side-bottom"><div className="balance-card"><span><small>SALDO TERSEDIA</small><b>{rupiah(data.balance)}</b></span><a href="/dashboard/top-up">+</a><div><i style={{ width: "68%" }} /></div><p>68% dari limit bulanan</p></div><a className="docs-link" href="/docs"><i>⌘</i> Dokumentasi API <span>↗</span></a><div className="user-card"><span>{initials}</span><div><b>{userName}</b><small>{userEmail}</small></div><a href="/signout-with-chatgpt?return_to=/">↪</a></div></div>
