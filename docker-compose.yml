@@ -64,6 +64,7 @@
       retries: 10
     networks:
       - internal
+      - public
   postgres-app:
     image: postgres:17-alpine
     environment:
