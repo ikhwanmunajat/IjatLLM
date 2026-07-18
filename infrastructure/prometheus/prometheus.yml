@@ -8,9 +8,5 @@ scrape_configs:
       type: Bearer
       credentials_file: /etc/prometheus/litellm-master-key
     static_configs:
-      - targets: ["litellm:4000"]
-
-  - job_name: app-api
-    metrics_path: /metrics
-    static_configs:
-      - targets: ["app-api:8000"]
+      - targets:
+          - litellm:4000
