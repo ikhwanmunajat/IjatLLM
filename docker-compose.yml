@@ -106,7 +106,7 @@
     networks: [internal]
   prometheus:
     image: prom/prometheus:v3.4.1
-    volumes: ["./infrastructure/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro", "prometheus-data:/prometheus"]
+    volumes: ["./infrastructure/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro", "./infrastructure/prometheus/litellm-master-key:/etc/prometheus/litellm-master-key:ro", "prometheus-data:/prometheus"]
     restart: unless-stopped
     networks: [internal]
   grafana:
@@ -135,6 +135,7 @@ volumes:
   redis-data: {}
   prometheus-data: {}
   grafana-data: {}
+
 
 
 

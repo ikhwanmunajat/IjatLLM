@@ -120,3 +120,5 @@ desktop.ini
 # END IJATLLM SECURITY FILTER
 
 /backup/
+
+infrastructure/prometheus/litellm-master-key
