@@ -1,0 +1,71 @@
+﻿{
+  "annotations": {"list":[]},
+  "editable": true,
+  "panels": [
+    {
+      "type":"stat","title":"Total Requests","id":1,
+      "gridPos":{"h":5,"w":6,"x":0,"y":0},
+      "datasource":{"type":"prometheus","uid":"prometheus"},
+      "targets":[{"expr":"sum(increase(litellm_requests_metric_total[$__range]))","refId":"A"}]
+    },
+    {
+      "type":"stat","title":"Input Tokens","id":2,
+      "gridPos":{"h":5,"w":6,"x":6,"y":0},
+      "datasource":{"type":"prometheus","uid":"prometheus"},
+      "targets":[{"expr":"sum(increase(litellm_input_tokens_metric_total[$__range]))","refId":"A"}]
+    },
+    {
+      "type":"stat","title":"Output Tokens","id":3,
+      "gridPos":{"h":5,"w":6,"x":12,"y":0},
+      "datasource":{"type":"prometheus","uid":"prometheus"},
+      "targets":[{"expr":"sum(increase(litellm_output_tokens_metric_total[$__range]))","refId":"A"}]
+    },
+    {
+      "type":"stat","title":"Spend (USD)","id":4,
+      "gridPos":{"h":5,"w":6,"x":18,"y":0},
+      "datasource":{"type":"prometheus","uid":"prometheus"},
+      "fieldConfig":{"defaults":{"unit":"currencyUSD"}},
+      "targets":[{"expr":"sum(increase(litellm_spend_metric_total[$__range]))","refId":"A"}]
+    },
+    {
+      "type":"timeseries","title":"Request Rate","id":5,
+      "gridPos":{"h":8,"w":12,"x":0,"y":5},
+      "datasource":{"type":"prometheus","uid":"prometheus"},
+      "targets":[{"expr":"sum(rate(litellm_requests_metric_total[5m]))","legendFormat":"requests/sec","refId":"A"}]
+    },
+    {
+      "type":"timeseries","title":"P95 Total Latency","id":6,
+      "gridPos":{"h":8,"w":12,"x":12,"y":5},
+      "datasource":{"type":"prometheus","uid":"prometheus"},
+      "fieldConfig":{"defaults":{"unit":"s"}},
+      "targets":[{"expr":"histogram_quantile(0.95, sum by (le) (rate(litellm_request_total_latency_metric_bucket[5m])))","legendFormat":"P95","refId":"A"}]
+    },
+    {
+      "type":"stat","title":"Requests In Flight","id":7,
+      "gridPos":{"h":5,"w":8,"x":0,"y":13},
+      "datasource":{"type":"prometheus","uid":"prometheus"},
+      "targets":[{"expr":"sum(litellm_in_flight_requests)","refId":"A"}]
+    },
+    {
+      "type":"stat","title":"Total Users","id":8,
+      "gridPos":{"h":5,"w":8,"x":8,"y":13},
+      "datasource":{"type":"prometheus","uid":"prometheus"},
+      "targets":[{"expr":"sum(litellm_total_users)","refId":"A"}]
+    },
+    {
+      "type":"stat","title":"Active Users","id":9,
+      "gridPos":{"h":5,"w":8,"x":16,"y":13},
+      "datasource":{"type":"prometheus","uid":"prometheus"},
+      "targets":[{"expr":"sum(litellm_active_users)","refId":"A"}]
+    }
+  ],
+  "refresh":"15s",
+  "schemaVersion":41,
+  "tags":["ijatllm","litellm"],
+  "templating":{"list":[]},
+  "time":{"from":"now-6h","to":"now"},
+  "timezone":"browser",
+  "title":"IjatLLM Monitoring",
+  "uid":"ijatllm-monitoring",
+  "version":1
+}
