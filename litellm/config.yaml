@@ -70,7 +70,7 @@ general_settings:
 litellm_settings:
   drop_params: true
   set_verbose: false
-   success_callback:
+  success_callback:
     - prometheus
   failure_callback:
     - prometheus
