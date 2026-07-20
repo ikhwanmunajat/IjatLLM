@@ -12,13 +12,13 @@ if (!apiKey) {
     const { data, error } = await resend.emails.send({
       from: "IjatLLM <noreply@ijatllm.my.id>",
 
-      // Ganti dengan email penerima pengujian
-      to: ["EMAIL_ANDA@gmail.com"],
+      // Ganti dengan alamat email penerima pengujian
+      to: ["wannstoree17@gmail.com"],
 
       replyTo: "support@ijatllm.my.id",
 
       template: {
-        // Gunakan alias yang terlihat pada dashboard Resend
+        // Alias template Resend
         id: "ijatllm-pembuatan-akun-1",
 
         variables: {
