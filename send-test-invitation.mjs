@@ -3,7 +3,7 @@ import { Resend } from "resend";
 const apiKey = process.env.RESEND_API_KEY;
 
 if (!apiKey) {
-  console.error("RESEND_API_KEY belum diatur.");
+  console.error("740424f7-290e-406b-b14a-597ef9d84586");
   process.exit(1);
 }
 
