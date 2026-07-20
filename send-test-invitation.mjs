@@ -10,8 +10,8 @@ if (!apiKey) {
 const resend = new Resend(apiKey);
 
 async function sendTestInvitation() {
-  const recipientEmail = "EMAIL_ANDA@gmail.com";
-  const templateId = "MASUKKAN_TEMPLATE_ID";
+  const recipientEmail = "wannstoree17@gmail.com";
+  const templateId = "564dd21c-7da4-444b-b95a-61ec2194d405";
 
   const { data, error } = await resend.emails.send({
     from: "IjatLLM <noreply@ijatllm.my.id>",
