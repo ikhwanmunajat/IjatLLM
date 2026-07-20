@@ -22,7 +22,7 @@ if (!apiKey) {
         id: "ijatllm-pembuatan-akun-1",
 
         variables: {
-          user_name: "Ijat",
+          user_name: "Sayang Love You",
           invite_url:
             "https://lite.ijatllm.my.id/ui/login/?test_invite=1",
         },
