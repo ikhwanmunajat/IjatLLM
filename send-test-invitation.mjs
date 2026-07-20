@@ -3,47 +3,45 @@ import { Resend } from "resend";
 const apiKey = process.env.RESEND_API_KEY;
 
 if (!apiKey) {
-  console.error("740424f7-290e-406b-b14a-597ef9d84586");
-  process.exit(1);
-}
+  console.error("RESEND_API_KEY belum diatur.");
+  process.exitCode = 1;
+} else {
+  const resend = new Resend(apiKey);
 
-const resend = new Resend(apiKey);
+  try {
+    const { data, error } = await resend.emails.send({
+      from: "IjatLLM <noreply@ijatllm.my.id>",
 
-async function sendTestInvitation() {
-  const recipientEmail = "wannstoree17@gmail.com";
-  const templateId = "564dd21c-7da4-444b-b95a-61ec2194d405";
+      // Ganti dengan email penerima pengujian
+      to: ["EMAIL_ANDA@gmail.com"],
 
-  const { data, error } = await resend.emails.send({
-    from: "IjatLLM <noreply@ijatllm.my.id>",
+      replyTo: "support@ijatllm.my.id",
 
-    to: [recipientEmail],
+      template: {
+        // Gunakan alias yang terlihat pada dashboard Resend
+        id: "ijatllm-pembuatan-akun-1",
 
-    template: {
-      id: templateId,
-
-      variables: {
-        user_name: "Ijat",
-
-        invite_url:
-          "https://lite.ijatllm.my.id/ui/login/?test_invite=1",
+        variables: {
+          user_name: "Ijat",
+          invite_url:
+            "https://lite.ijatllm.my.id/ui/login/?test_invite=1",
+        },
       },
-    },
-  });
+    });
 
-  if (error) {
-    console.error(
-      "Pengiriman email gagal:",
-      JSON.stringify(error, null, 2),
-    );
+    if (error) {
+      console.error(
+        "Pengiriman email gagal:",
+        JSON.stringify(error, null, 2),
+      );
 
-    process.exit(1);
+      process.exitCode = 1;
+    } else {
+      console.log("Email berhasil dikirim:");
+      console.log(JSON.stringify(data, null, 2));
+    }
+  } catch (error) {
+    console.error("Kesalahan program:", error);
+    process.exitCode = 1;
   }
-
-  console.log("Email berhasil dikirim.");
-  console.log(JSON.stringify(data, null, 2));
 }
-
-sendTestInvitation().catch((error) => {
-  console.error("Terjadi kesalahan:", error);
-  process.exit(1);
-});
