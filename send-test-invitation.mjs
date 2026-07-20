@@ -13,7 +13,7 @@ if (!apiKey) {
       from: "IjatLLM <noreply@ijatllm.my.id>",
 
       // Ganti dengan alamat email penerima pengujian
-      to: ["wannstoree17@gmail.com"],
+      to: ["putrisrianika252@gmail.com"],
 
       replyTo: "support@ijatllm.my.id",
 
