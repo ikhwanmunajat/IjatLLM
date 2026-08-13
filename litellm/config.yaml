@@ -4,69 +4,34 @@ model_list:
   # GOOGLE GEMINI
   # =========================
 
-  - model_name: smart-fast
+  - model_name: ijat-smart-fast
     litellm_params:
       model: gemini/gemini-3-flash-preview
       api_key: os.environ/GEMINI_API_KEY
 
-  - model_name: gemini/gemini-2.5-computer-use-preview-10-2025
+  - model_name: ijat-gemini-2.5-flash
     litellm_params:
-      model: gemini/gemini-2.5-computer-use-preview-10-2025
+      model: gemini/gemini-2.5-flash
       api_key: os.environ/GEMINI_API_KEY
 
-  - model_name: gemini/gemini-2.5-flash-image
-    litellm_params:
-      model: gemini/gemini-2.5-flash-image
-      api_key: os.environ/GEMINI_API_KEY
-
-  - model_name: gemini/gemini-2.5-flash-lite
+  - model_name: ijat-gemini-2.5-flash-lite
     litellm_params:
       model: gemini/gemini-2.5-flash-lite
       api_key: os.environ/GEMINI_API_KEY
 
-  - model_name: gemini/gemini-2.5-pro
+  - model_name: ijat-gemini-2.5-pro
     litellm_params:
       model: gemini/gemini-2.5-pro
       api_key: os.environ/GEMINI_API_KEY
 
-  - model_name: gemini/gemini-3.1-flash-image-preview
+  - model_name: ijat-gemini-image
     litellm_params:
-      model: gemini/gemini-3.1-flash-image-preview
+      model: gemini/gemini-2.5-flash-image
       api_key: os.environ/GEMINI_API_KEY
 
-  - model_name: gemini/gemini-3.1-flash-lite-preview
-    litellm_params:
-      model: gemini/gemini-3.1-flash-lite-preview
-      api_key: os.environ/GEMINI_API_KEY
-
-  - model_name: gemini/gemini-3.1-pro-preview
-    litellm_params:
-      model: gemini/gemini-3.1-pro-preview
-      api_key: os.environ/GEMINI_API_KEY
-
-  - model_name: gemini/gemini-3.1-pro-preview-customtools
-    litellm_params:
-      model: gemini/gemini-3.1-pro-preview-customtools
-      api_key: os.environ/GEMINI_API_KEY
-
-  - model_name: gemini/gemini-3-flash-preview
-    litellm_params:
-      model: gemini/gemini-3-flash-preview
-      api_key: os.environ/GEMINI_API_KEY
-
-  - model_name: gemini/gemini-3-pro-image-preview
-    litellm_params:
-      model: gemini/gemini-3-pro-image-preview
-      api_key: os.environ/GEMINI_API_KEY
-
-  - model_name: gemini/gemini-embedding-001
+  - model_name: ijat-gemini-embedding
     litellm_params:
       model: gemini/gemini-embedding-001
-      api_key: os.environ/GEMINI_API_KEY
-
-  - model_name: gemini/gemini-live-2.5-flash-preview-native-audio-09-2025
-    litellm_params:
-      model: gemini/gemini-live-2.5-flash-preview-native-audio-09-2025
       api_key: os.environ/GEMINI_API_KEY
 
 
@@ -74,27 +39,27 @@ model_list:
   # OPENAI
   # =========================
 
-  - model_name: openai/gpt-5
+  - model_name: ijat-gpt-5
     litellm_params:
       model: openai/gpt-5
       api_key: os.environ/OPENAI_API_KEY
 
-  - model_name: openai/gpt-5-mini
+  - model_name: ijat-gpt-5-mini
     litellm_params:
       model: openai/gpt-5-mini
       api_key: os.environ/OPENAI_API_KEY
 
-  - model_name: openai/gpt-4.1
+  - model_name: ijat-gpt-4.1
     litellm_params:
       model: openai/gpt-4.1
       api_key: os.environ/OPENAI_API_KEY
 
-  - model_name: openai/gpt-4.1-mini
+  - model_name: ijat-gpt-4.1-mini
     litellm_params:
       model: openai/gpt-4.1-mini
       api_key: os.environ/OPENAI_API_KEY
 
-  - model_name: openai/o4-mini
+  - model_name: ijat-o4-mini
     litellm_params:
       model: openai/o4-mini
       api_key: os.environ/OPENAI_API_KEY
@@ -104,17 +69,17 @@ model_list:
   # ANTHROPIC CLAUDE
   # =========================
 
-  - model_name: claude-4-opus
+  - model_name: ijat-claude-opus
     litellm_params:
       model: anthropic/claude-opus-4
       api_key: os.environ/ANTHROPIC_API_KEY
 
-  - model_name: claude-4-sonnet
+  - model_name: ijat-claude-sonnet
     litellm_params:
       model: anthropic/claude-sonnet-4
       api_key: os.environ/ANTHROPIC_API_KEY
 
-  - model_name: claude-haiku
+  - model_name: ijat-claude-haiku
     litellm_params:
       model: anthropic/claude-haiku
       api_key: os.environ/ANTHROPIC_API_KEY
@@ -124,32 +89,33 @@ model_list:
   # DEEPSEEK
   # =========================
 
-  - model_name: deepseek-chat
+  - model_name: ijat-deepseek-chat
     litellm_params:
       model: deepseek/deepseek-chat
       api_key: os.environ/DEEPSEEK_API_KEY
 
-  - model_name: deepseek-reasoner
+  - model_name: ijat-deepseek-reasoner
     litellm_params:
       model: deepseek/deepseek-reasoner
       api_key: os.environ/DEEPSEEK_API_KEY
 
 
   # =========================
-  # OPENROUTER (100+ MODELS)
+  # OPENROUTER
+  # akses 100+ model AI
   # =========================
 
-  - model_name: openrouter/llama-4
+  - model_name: ijat-llama
     litellm_params:
       model: openrouter/meta-llama/llama-4
       api_key: os.environ/OPENROUTER_API_KEY
 
-  - model_name: openrouter/qwen-3
+  - model_name: ijat-qwen
     litellm_params:
       model: openrouter/qwen/qwen3
       api_key: os.environ/OPENROUTER_API_KEY
 
-  - model_name: openrouter/mistral-large
+  - model_name: ijat-mistral
     litellm_params:
       model: openrouter/mistralai/mistral-large
       api_key: os.environ/OPENROUTER_API_KEY
@@ -159,7 +125,7 @@ model_list:
   # GROQ
   # =========================
 
-  - model_name: groq/llama
+  - model_name: ijat-groq-llama
     litellm_params:
       model: groq/llama-3.3-70b-versatile
       api_key: os.environ/GROQ_API_KEY
@@ -169,7 +135,7 @@ model_list:
   # MISTRAL AI
   # =========================
 
-  - model_name: mistral-large
+  - model_name: ijat-mistral-large
     litellm_params:
       model: mistral/mistral-large-latest
       api_key: os.environ/MISTRAL_API_KEY
@@ -177,11 +143,14 @@ model_list:
 
 
 general_settings:
+
   master_key: os.environ/LITELLM_MASTER_KEY
 
 
 litellm_settings:
+
   drop_params: true
+
   set_verbose: false
 
   callbacks:
