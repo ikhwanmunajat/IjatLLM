@@ -9,30 +9,36 @@ model_list:
       model: gemini/gemini-3-flash-preview
       api_key: os.environ/GEMINI_API_KEY
 
-  - model_name: ijat-gemini-2.5-flash
+
+  - model_name: ijat-gemini-3-flash
     litellm_params:
-      model: gemini/gemini-2.5-flash
+      model: gemini/gemini-3-flash-preview
       api_key: os.environ/GEMINI_API_KEY
 
-  - model_name: ijat-gemini-2.5-flash-lite
+
+  - model_name: ijat-gemini-3-flash-lite
     litellm_params:
-      model: gemini/gemini-2.5-flash-lite
+      model: gemini/gemini-3.1-flash-lite-preview
       api_key: os.environ/GEMINI_API_KEY
 
-  - model_name: ijat-gemini-2.5-pro
+
+  - model_name: ijat-gemini-3-pro
     litellm_params:
-      model: gemini/gemini-2.5-pro
+      model: gemini/gemini-3.1-pro-preview
       api_key: os.environ/GEMINI_API_KEY
+
 
   - model_name: ijat-gemini-image
     litellm_params:
-      model: gemini/gemini-2.5-flash-image
+      model: gemini/gemini-3-pro-image-preview
       api_key: os.environ/GEMINI_API_KEY
+
 
   - model_name: ijat-gemini-embedding
     litellm_params:
       model: gemini/gemini-embedding-001
       api_key: os.environ/GEMINI_API_KEY
+
 
 
   # =========================
@@ -44,25 +50,30 @@ model_list:
       model: openai/gpt-5
       api_key: os.environ/OPENAI_API_KEY
 
+
   - model_name: ijat-gpt-5-mini
     litellm_params:
       model: openai/gpt-5-mini
       api_key: os.environ/OPENAI_API_KEY
+
 
   - model_name: ijat-gpt-4.1
     litellm_params:
       model: openai/gpt-4.1
       api_key: os.environ/OPENAI_API_KEY
 
+
   - model_name: ijat-gpt-4.1-mini
     litellm_params:
       model: openai/gpt-4.1-mini
       api_key: os.environ/OPENAI_API_KEY
 
+
   - model_name: ijat-o4-mini
     litellm_params:
       model: openai/o4-mini
       api_key: os.environ/OPENAI_API_KEY
+
 
 
   # =========================
@@ -74,15 +85,18 @@ model_list:
       model: anthropic/claude-opus-4
       api_key: os.environ/ANTHROPIC_API_KEY
 
+
   - model_name: ijat-claude-sonnet
     litellm_params:
       model: anthropic/claude-sonnet-4
       api_key: os.environ/ANTHROPIC_API_KEY
 
+
   - model_name: ijat-claude-haiku
     litellm_params:
       model: anthropic/claude-haiku
       api_key: os.environ/ANTHROPIC_API_KEY
+
 
 
   # =========================
@@ -94,15 +108,16 @@ model_list:
       model: deepseek/deepseek-chat
       api_key: os.environ/DEEPSEEK_API_KEY
 
+
   - model_name: ijat-deepseek-reasoner
     litellm_params:
       model: deepseek/deepseek-reasoner
       api_key: os.environ/DEEPSEEK_API_KEY
 
 
+
   # =========================
   # OPENROUTER
-  # akses 100+ model AI
   # =========================
 
   - model_name: ijat-llama
@@ -110,15 +125,18 @@ model_list:
       model: openrouter/meta-llama/llama-4
       api_key: os.environ/OPENROUTER_API_KEY
 
+
   - model_name: ijat-qwen
     litellm_params:
       model: openrouter/qwen/qwen3
       api_key: os.environ/OPENROUTER_API_KEY
 
+
   - model_name: ijat-mistral
     litellm_params:
       model: openrouter/mistralai/mistral-large
       api_key: os.environ/OPENROUTER_API_KEY
+
 
 
   # =========================
@@ -129,6 +147,7 @@ model_list:
     litellm_params:
       model: groq/llama-3.3-70b-versatile
       api_key: os.environ/GROQ_API_KEY
+
 
 
   # =========================
@@ -145,6 +164,7 @@ model_list:
 general_settings:
 
   master_key: os.environ/LITELLM_MASTER_KEY
+
 
 
 litellm_settings:
