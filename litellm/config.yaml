@@ -1,13 +1,18 @@
 model_list:
+
+  # =========================
+  # GOOGLE GEMINI
+  # =========================
+
   - model_name: smart-fast
     litellm_params:
       model: gemini/gemini-3-flash-preview
       api_key: os.environ/GEMINI_API_KEY
+
   - model_name: gemini/gemini-2.5-computer-use-preview-10-2025
     litellm_params:
       model: gemini/gemini-2.5-computer-use-preview-10-2025
       api_key: os.environ/GEMINI_API_KEY
-
 
   - model_name: gemini/gemini-2.5-flash-image
     litellm_params:
@@ -64,15 +69,126 @@ model_list:
       model: gemini/gemini-live-2.5-flash-preview-native-audio-09-2025
       api_key: os.environ/GEMINI_API_KEY
 
+
+  # =========================
+  # OPENAI
+  # =========================
+
+  - model_name: openai/gpt-5
+    litellm_params:
+      model: openai/gpt-5
+      api_key: os.environ/OPENAI_API_KEY
+
+  - model_name: openai/gpt-5-mini
+    litellm_params:
+      model: openai/gpt-5-mini
+      api_key: os.environ/OPENAI_API_KEY
+
+  - model_name: openai/gpt-4.1
+    litellm_params:
+      model: openai/gpt-4.1
+      api_key: os.environ/OPENAI_API_KEY
+
+  - model_name: openai/gpt-4.1-mini
+    litellm_params:
+      model: openai/gpt-4.1-mini
+      api_key: os.environ/OPENAI_API_KEY
+
+  - model_name: openai/o4-mini
+    litellm_params:
+      model: openai/o4-mini
+      api_key: os.environ/OPENAI_API_KEY
+
+
+  # =========================
+  # ANTHROPIC CLAUDE
+  # =========================
+
+  - model_name: claude-4-opus
+    litellm_params:
+      model: anthropic/claude-opus-4
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  - model_name: claude-4-sonnet
+    litellm_params:
+      model: anthropic/claude-sonnet-4
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+  - model_name: claude-haiku
+    litellm_params:
+      model: anthropic/claude-haiku
+      api_key: os.environ/ANTHROPIC_API_KEY
+
+
+  # =========================
+  # DEEPSEEK
+  # =========================
+
+  - model_name: deepseek-chat
+    litellm_params:
+      model: deepseek/deepseek-chat
+      api_key: os.environ/DEEPSEEK_API_KEY
+
+  - model_name: deepseek-reasoner
+    litellm_params:
+      model: deepseek/deepseek-reasoner
+      api_key: os.environ/DEEPSEEK_API_KEY
+
+
+  # =========================
+  # OPENROUTER (100+ MODELS)
+  # =========================
+
+  - model_name: openrouter/llama-4
+    litellm_params:
+      model: openrouter/meta-llama/llama-4
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: openrouter/qwen-3
+    litellm_params:
+      model: openrouter/qwen/qwen3
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  - model_name: openrouter/mistral-large
+    litellm_params:
+      model: openrouter/mistralai/mistral-large
+      api_key: os.environ/OPENROUTER_API_KEY
+
+
+  # =========================
+  # GROQ
+  # =========================
+
+  - model_name: groq/llama
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+
+
+  # =========================
+  # MISTRAL AI
+  # =========================
+
+  - model_name: mistral-large
+    litellm_params:
+      model: mistral/mistral-large-latest
+      api_key: os.environ/MISTRAL_API_KEY
+
+
+
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
+
 
 litellm_settings:
   drop_params: true
   set_verbose: false
+
   callbacks:
     - resend_email
+
   success_callback:
     - prometheus
+
   failure_callback:
     - prometheus
